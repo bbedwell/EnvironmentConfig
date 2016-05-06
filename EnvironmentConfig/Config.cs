@@ -7,7 +7,7 @@ namespace EnvironmentConfig
 {
     public static class Config
     {
-        private static string prefix = Assembly.GetExecutingAssembly().GetName().Name.Split('.').FirstOrDefault().ToUpper();
+        private static string prefix = Assembly.GetEntryAssembly().GetName().Name.Split('.').FirstOrDefault().ToUpper();
 
         public static string GetAppSetting(string name)
         {

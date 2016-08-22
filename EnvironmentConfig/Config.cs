@@ -9,7 +9,9 @@ namespace EnvironmentConfig
     {
         public static string GetAppSetting(string name)
         {
-            var prefix = Assembly.GetCallingAssembly().GetName().Name.Split('.').FirstOrDefault().ToUpper();
+            var prefix = ConfigurationManager.AppSettings.Get("EnvironmentConfigPrefix")
+                ?? Assembly.GetCallingAssembly().GetName().Name.Split('.').FirstOrDefault().ToUpper();
+
             return Environment.GetEnvironmentVariable(prefix + '.' + name.ToUpper())
                 ?? ConfigurationManager.AppSettings.Get(name);
         }
